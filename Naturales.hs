@@ -28,13 +28,13 @@ instance Num N where{
         O -> n2 
         S m -> S(m + n2);
     (*) = \ n1 n2 -> case n1 of 
-        O-> n2;
+        O-> O;
         S m -> n2 + (m * n2);
     (-) = \ n1 n2 -> case n1 of 
-        O -> O;
+        O -> n2;
         S m -> case n2 of 
-            O-> n2 ;
-            S n ->  m-n        
+            O-> O ;
+            S n -> m - n        
 
 
 
