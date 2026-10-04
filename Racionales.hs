@@ -14,12 +14,26 @@ import Naturales
 data Signo where { Pos :: Signo ; Neg :: Signo } deriving Show
 
 data Racional where { Q :: Signo -> (N,N) -> Racional } deriving Show
-
+--es la tablita de verdaero y falso 
 instance Eq Signo where
-    (==) = undefined
-    
+    (==) = \s1 s2 -> case s1 of 
+        Pos -> case s2 of 
+            Pos-> True
+            Neg-> False
+        Neg-> case s2 of
+            Pos -> False
+            Neg -> True
+--ma;ana explico jsjs
 instance Eq Racional where
-    (==) = undefined
+    (==) = \r1 r2 -> case r1 of
+        Q s1 (a,b) -> case r2 of
+            Q s2 (c,d) -> case (s1 == s2) of
+                True -> (a * d) == (b * c)
+                False -> case (a == O) of
+                    True -> case (c == O) of
+                        True -> True
+                        False -> False
+                    False -> False
 
 instance Ord Signo where
     (<=) = undefined
