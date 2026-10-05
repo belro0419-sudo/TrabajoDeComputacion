@@ -1,5 +1,5 @@
 -- Iván De León
--- NRO ESTUDIANTE 1
+-- 330339
 
 -- Belen Rodriguez
 -- 373879
@@ -15,7 +15,7 @@ data Signo where { Pos :: Signo ; Neg :: Signo } deriving Show
 
 data Racional where { Q :: Signo -> (N,N) -> Racional } deriving Show
 
---es la tablita de verdaero y falso 
+
 instance Eq Signo where
     (==) = \s1 s2 -> case s1 of 
         Pos -> case s2 of 
@@ -24,7 +24,7 @@ instance Eq Signo where
         Neg-> case s2 of
             Pos -> False
             Neg -> True
---ma;ana explico jsjs
+
 instance Eq Racional where
     (==) = \r1 r2 -> case r1 of
         Q s1 (a,b) -> case r2 of
@@ -79,7 +79,7 @@ instance Num Racional where
             False-> case (c==O) of
                 True -> Q s1 (O,b*d)
                 False -> case (s1 == s2) of
-                    True -> Q s1 (a*c,b*d)
+                    True -> Q Pos (a*c,b*d)
                     False -> Q Neg (a*c,b*d)
                      
     (-) =  \r1 r2 -> case r1 of
@@ -87,4 +87,3 @@ instance Num Racional where
         Q s2 (c,d) -> case s2 of
             Pos -> r1 + Q Neg (c,d)
             Neg -> r1 + Q Pos (c,d)
-        
